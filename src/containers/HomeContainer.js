@@ -1,10 +1,22 @@
-import Button from "../components/Button";
+import Button from "../components/Button/index.js";
+import AbstractContainer from "./AbstractContainer.js";
 
-class HomeContainer {
-  constructor() {
-    const viewContainer = document.createElement('div');
-    this.button = new Button({ target: viewContainer, onclick: () => window.router.navigateTo('/list') });
-    target.appendChild(viewContainer)
+export default class HomeContainer extends AbstractContainer{
+  constructor(viewElem) {
+    super(viewElem);
+    this.init();
+  }
 
+  init () {
+    const target = this.$container;
+    this.setComponents('button', new Button({
+      target,
+      onclick: () => window.router.navigateTo('/list')
+    }));
+  }
+
+  render () {
+    const { button } = this.components;
+    button.render();
   }
 }
