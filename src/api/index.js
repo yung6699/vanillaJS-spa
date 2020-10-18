@@ -7,6 +7,6 @@ async function fetchInstance (url, options = {}) {
 }
 
 export function fetchMoviesByGenre ({ limit = 20, pageNum, genre = '' }) {
-  const url = `${API_ENDPOINT}/list_movies.json?limit=${limit}&pageNum=${pageNum}&genre=${genre}`;
+  const url = `${API_ENDPOINT}/list_movies.json?sort_by=year&limit=${limit}&pageNum=${pageNum}&genre=${genre}`;
   return fetchInstance(url)
 }
