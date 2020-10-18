@@ -11,4 +11,8 @@ export default class {
     this.components[key] = component;
   }
 
+  mounted () {
+
+  }
+
 }
