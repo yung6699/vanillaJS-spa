@@ -9,7 +9,6 @@ export default class ListView extends AbstractView{
   }
 
   render () {
-    this.$viewContainer.innerHTML = `<h1>Test</h1>`
   }
 
 }
