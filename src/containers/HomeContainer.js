@@ -1,13 +1,13 @@
-import Button from "../components/Button/index.js";
 import AbstractContainer from "./AbstractContainer.js";
 import MovieCard from "/src/components/Card/index.js";
-import { afterRender } from "/src/utils/components.js";
+import { toCapitalize } from "/src/utils/text.js";
 
 const MOVIE_CARD = 'MovieCard';
 
 export default class HomeContainer extends AbstractContainer{
-  constructor(viewElem) {
+  constructor(viewElem, genre = '') {
     super(viewElem);
+    this._genre = genre;
     this.beforeMounted();
   }
 
@@ -21,16 +21,10 @@ export default class HomeContainer extends AbstractContainer{
     // });
   }
 
-  mounted () {
-    // const { components } = this;
-    // afterRender(components);
-  }
-
   setState (state) {
     this._state = state;
     this.render();
   }
-
 
   makeMovieItemsHTML (movies) {
     return movies.map((movie) => {
@@ -42,10 +36,11 @@ export default class HomeContainer extends AbstractContainer{
 
   render () {
     const target = this.$container;
+    const title = (this._genre) ? toCapitalize(this._genre) : 'Top 20';
     const movies = this._state.movies;
-    const movieItems = (movies.length > 0) ? this.makeMovieItemsHTML(movies) : '<div>검색 결과가 없다.</div>';
+    const movieItems = (movies.length > 0) ? this.makeMovieItemsHTML(movies) : '<div>데이터를 가져오는 중......</div>';
     target.innerHTML = `
-      <header></header>
+      <header class="Movie-title">${title} Movies</header>
       <div class="Movie-list">
         ${movieItems}
       </div>  

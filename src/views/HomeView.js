@@ -1,16 +1,16 @@
 import AbstractView from "./AbstractView.js";
 import HomeContainer from "../containers/HomeContainer.js";
-import { fetchMovies } from '/src/api/index.js'
+import { fetchMoviesByGenre } from '/src/api/index.js'
 import { propsStateToComponents } from '/src/utils/components.js'
 
-const HOME_VIEW_TITLE = 'Home';
+const HOME_VIEW_TITLE = 'Top 20개 영화';
 const MOVIES = 'movies';
 const HOME_CONTAINER = 'homeContainer';
 
 export default class HomeView extends AbstractView{
   constructor(params) {
     super();
-
+    this.genre = params.genre || '';
     this.setTitle(HOME_VIEW_TITLE);
     this.initComponent();
     this.initState();
@@ -20,7 +20,7 @@ export default class HomeView extends AbstractView{
 
   initComponent () {
     const target = this.$viewElement;
-    this.setComponents(HOME_CONTAINER, new HomeContainer(target));
+    this.setComponents(HOME_CONTAINER, new HomeContainer(target, this.genre));
   }
 
   initState () {
@@ -35,13 +35,12 @@ export default class HomeView extends AbstractView{
   }
 
   async fetchMovies () {
-    const { data } = await fetchMovies({ pageNum: 1 });
+    const { data } = await fetchMoviesByGenre({ pageNum: 1, genre: this.genre });
     const { movies } = data;
     this.setState(MOVIES, [ ...movies ])
   }
 
   render () {
-    const { homeContainer } = this.components;
-    homeContainer.render();
+    this.components[HOME_CONTAINER].render();
   }
 }
