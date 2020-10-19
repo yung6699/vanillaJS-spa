@@ -2,8 +2,14 @@ export default class SideMenu {
   constructor() {
     this.menuList = [
       { title: 'Top 20', path: '/'},
-      { title: '역사', path: '/history'},
-      { title: '스릴러', path: '/thriller'},
+      { title: 'History', path: '/history'},
+      { title: 'Fantasy', path: '/fantasy' },
+      { title: 'Thriller', path: '/thriller'},
+      { title: 'Drama', path: '/drama'},
+      { title: 'Action', path: '/action'},
+      { title: 'Comedy', path: '/comedy'},
+      { title: 'Crime', path: '/crime'},
+      { title: 'Animation', path: '/animation'},
     ]
   }
 
