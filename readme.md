@@ -1,7 +1,7 @@
 # VanillaJS Single Page Application
 
 > Vanilla.js로 Single Page Application 구조를 구현해봤습니다. <Br/>
-> 링크 : [Vanilla Single Page Application](https://www.youtube.com/watch?v=6BozpmSjk-Y&feature=emb_title)
+> 바닐라 라우터 참고 링크 : [Vanilla Single Page Application](https://www.youtube.com/watch?v=6BozpmSjk-Y&feature=emb_title)
 
 ## Installation
 ```
